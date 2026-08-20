@@ -1,0 +1,62 @@
+BASE DE CONOCIMIENTO — Odontologia MG
+
+== DOCTORES Y ESPECIALIDADES ==
+
+Dr. Romero Fabian
+- Especialidad: Odontología General
+- Rango de edad: Adultos mayores de 15 años
+- ID: 3
+
+Dr. Saieg Roberto
+- Especialidad: Odontología General
+- Rango de edad: Adultos mayores de 15 años
+- ID: 4
+
+Dra. Manzano Susana
+- Especialidad: Odontología Pediátrica
+- Rango de edad: Niños de 0 a 15 años
+- ID: 5
+
+== SERVICIOS DISPONIBLES ==
+
+Procedimientos Generales:
+- Limpiezas dentales
+- Caries (detección y tratamiento)
+- Extracciones dentales
+- Tratamientos de conducto (endodoncia)
+- Prótesis (coronas y puentes)
+
+Procedimientos Estéticos:
+- Blanqueamiento dental
+- Blanqueamiento profesional
+- Carillas de porcelana
+- Rellenos estéticos
+
+Procedimientos Avanzados:
+- Implantes dentales
+- Injertos de encía
+- Sinus Lift
+- Regeneración ósea
+
+Ortodoncia:
+- Aparatos fijos
+- Aparatos removibles
+- Alineadores trasparentes
+
+Periodoncia:
+- Tratamiento de enfermedades de las encías
+- Cirugía periodontal
+- Mantenimiento
+
+== HORARIOS DE ATENCIÓN ==
+
+Lunes a Jueves: 09:00 a 18:00 hs
+Viernes: 09:00 a 13:00 hs
+Sábados, domingos y feriados: Cerrado
+
+== UBICACIÓN ==
+Santa Fe 1108 - (8300) Neuquén
+
+== CONTACTO ==
+WhatsApp: 54 299 5965754
+Website: https://www.odontologiamg.ar/

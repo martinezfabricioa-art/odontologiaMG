@@ -1,0 +1,23 @@
+# Configuración del negocio — Generado por AgentKit
+negocio:
+  nombre: "Odontologia MG"
+  descripcion: >
+    Con más de 20 años de experiencia en odontología, con constante formación
+    y con tecnología de vanguardia, aseguramos tratamientos rápidos, seguros y,
+    sobre todo, personalizados. Atendemos caries, limpiezas dentales, tratamientos
+    de conducto, implantes, ortodoncia, periodoncia, estética dental, blanqueamiento,
+    extracciones y prótesis.
+  ubicacion: "Santa Fe 1108 - (8300) Neuquén"
+  horario: "Lunes a Jueves de 09:00 a 18:00 hs. Viernes de 09:00 a 13:00 hs."
+  whatsapp: "54 299 5965754"
+
+agente:
+  nombre: "Iris"
+  tono: "amigable y casual"
+  casos_de_uso:
+    - "Responder preguntas frecuentes sobre el centro, médicos y coberturas"
+    - "Orientar sobre cómo sacar turno online"
+
+metadata:
+  creado: "2026-08-20"
+  version: "1.0"
