@@ -15,9 +15,18 @@ API_URL = "http://odontologiamg.ar/assets/agenteWeb007.php"
 
 # Mapeo de médicos
 MEDICOS = {
-    3: {"nombre": "Dr. Romero Fabian", "especialidad": "Adultos mayores de 15 años"},
-    4: {"nombre": "Dr. Saieg Roberto", "especialidad": "Adultos mayores de 15 años"},
-    5: {"nombre": "Dra. Manzano Susana", "especialidad": "Niños de 0 a 15 años"}
+    2: {"nombre": "Dra. Gomez Mariana", "especialidad": "Odontología General, Cirugía Maxilofacial"},
+    9: {"nombre": "Dra. Chiaramonte Maria Laura", "especialidad": "Odontología General"},
+    21: {"nombre": "Dra. Lerma Analia", "especialidad": "Odontología General"},
+    22: {"nombre": "Dra. Mariana Levian Vera", "especialidad": "Odontología General"},
+    24: {"nombre": "Dra. Daniela Karpovicz", "especialidad": "Odontología General"},
+    25: {"nombre": "Dra. Lucia Lopez", "especialidad": "Odontología General"},
+    26: {"nombre": "Dr. Carrion Santiago", "especialidad": "Odontología General"},
+    28: {"nombre": "Dr. Porte Alejandro", "especialidad": "Odontología General"},
+    29: {"nombre": "Dra. Villagra Lucila", "especialidad": "Odontología General"},
+    31: {"nombre": "Dra. Nuñez Guadalupe", "especialidad": "Odontología General"},
+    32: {"nombre": "Dr. Pedone Felipe", "especialidad": "Odontología General"},
+    33: {"nombre": "Dra. Ulloa Julieta", "especialidad": "Odontología General"}
 }
 
 
