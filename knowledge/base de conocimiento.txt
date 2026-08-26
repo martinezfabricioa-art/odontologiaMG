@@ -1,62 +1,175 @@
 BASE DE CONOCIMIENTO — Odontologia MG
 
-== DOCTORES Y ESPECIALIDADES ==
+== INFORMACIÓN DE LA CLÍNICA ==
+Nombre: Odontología MG
+Ubicación: Hipólito Yrigoyen 557 - (8300) Neuquén
+Teléfono/WhatsApp: 54 299 6037282
+Website: https://www.odontologiamg.ar/
 
-Dr. Romero Fabian
-- Especialidad: Odontología General
-- Rango de edad: Adultos mayores de 15 años
-- ID: 3
+Horarios de atención:
+- Lunes a Viernes: 09:00 a 21:00 hs
+- Sábados, domingos y feriados: Cerrado
 
-Dr. Saieg Roberto
-- Especialidad: Odontología General
-- Rango de edad: Adultos mayores de 15 años
-- ID: 4
+Servicios:
+- Atiende pacientes nuevos: Sí
+- Particulares: Sí
+- Obras sociales: Sí
+- Solicitud de turnos: Por WhatsApp
+- Confirmación de turnos: Por envío de seña o por WhatsApp
+- Requiere seña para reservar: Sí
+- Cancelación/Reprogramación: Con 24 horas de anticipación para no perder seña
+- Formas de pago: Efectivo / Transferencia
 
-Dra. Manzano Susana
-- Especialidad: Odontología Pediátrica
-- Rango de edad: Niños de 0 a 15 años
-- ID: 5
+== PROFESIONALES Y ESPECIALIDADES ==
+
+Dra. GOMEZ MARIANA (ID: 2)
+- Especialidades: Odontología General, Cirugía Maxilofacial
+- Tratamientos: Implantes, Cirugía ortognática
+
+Dr. PORTE ALEJANDRO (ID: 28)
+- Especialidades: Odontología General, Endodoncia
+- Tratamientos: Tratamiento de conducto
+
+Dr. CARRION SANTIAGO (ID: 26)
+- Especialidades: Odontología General, Endodoncia
+- Tratamientos: Incrustaciones
+
+Dra. ULLOA JULIETA (ID: 33)
+- Especialidades: Odontología General
+
+Dra. LUCIA LOPEZ (ID: 25)
+- Especialidades: Odontología General, Periodoncia
+
+Dra. DANIELA KARPOVICZ (ID: 24)
+- Especialidades: Ortodoncia Invisible
+- Frecuencia: Una vez al mes
+
+Dra. CHIARAMONTE MARIA LAURA (ID: 9)
+- Especialidades: Ortodoncia
+- Horarios: Lunes 14:00 a 17:00 hs
+
+Dr. PEDONE FELIPE (ID: 32)
+- Especialidades: Odontología General
+- Tratamientos: Extracciones simples, Rehabilitaciones (fijas y removibles),
+  Tratamiento de conducto, Urgencias, Odontopediatría
+
+Dra. LERMA ANALIA (ID: 21)
+- Especialidades: Odontología General, Odontopediatría (todas las edades)
+
+Dra. VILLAGRA LUCILA (ID: 29)
+- Especialidades: Odontología General
+
+Dra. NUÑEZ GUADALUPE (ID: 31)
+- Especialidades: Odontología General, Odontopediatría
+- Tratamientos: Extracciones, Incrustaciones, Coronas
+- Edades: Adolescentes y niños a partir de los 10 años
 
 == SERVICIOS DISPONIBLES ==
 
 Procedimientos Generales:
+- Consulta
 - Limpiezas dentales
-- Caries (detección y tratamiento)
-- Extracciones dentales
-- Tratamientos de conducto (endodoncia)
-- Prótesis (coronas y puentes)
+- Restauración / Caries
+- Endodoncia (Tratamiento de conducto)
+- Extracciones
+- Prótesis
+- Rehabilitaciones (fijas y removibles)
+- Incrustaciones
+- Coronas
 
 Procedimientos Estéticos:
 - Blanqueamiento dental
-- Blanqueamiento profesional
-- Carillas de porcelana
-- Rellenos estéticos
+- Restauración estética
 
 Procedimientos Avanzados:
-- Implantes dentales
-- Injertos de encía
-- Sinus Lift
-- Regeneración ósea
+- Implantes
+- Cirugía Maxilofacial
+- Cirugía ortognática
+- Sinus Lift (implícito en cirugía)
+- Regeneración ósea (implícito en cirugía)
 
 Ortodoncia:
 - Aparatos fijos
 - Aparatos removibles
-- Alineadores trasparentes
+- Ortodoncia Invisible (Invisalign)
 
 Periodoncia:
 - Tratamiento de enfermedades de las encías
 - Cirugía periodontal
-- Mantenimiento
 
-== HORARIOS DE ATENCIÓN ==
+Odontopediatría:
+- Tratamiento dental en niños
+- Tratamiento en adolescentes
+- Extracciones pediátricas
 
-Lunes a Jueves: 09:00 a 18:00 hs
-Viernes: 09:00 a 13:00 hs
-Sábados, domingos y feriados: Cerrado
+== OBRAS SOCIALES ATENDIDAS ==
 
-== UBICACIÓN ==
-Santa Fe 1108 - (8300) Neuquén
+América Servicios MCA SA
+APSOT - Org. Techint
+Bancarios - SIACO S.A.
+CEA - San Pedro
+Credi-Guía
+Federada Salud
+Galeno Argentina S.A.
+ISSN
+Jerárquicos Salud
+Medicus Especialistas
+Medicus S.A.
+Medife Asoc. Civil
+Omint S.A.
+Opdea
+OSDE
+OSDE YPF
+OSFATLYF - SPO SA
+OSMATA - Ueno
+Ospatca
+Ospedyc (CEO SRL)
+Ospepri
+Ospesga
+OSPSIP - SPO SA
+OSSEG
+Poder Judicial
+Prevención Salud S.A.
+Programas Médicos Soc. Arg. de Cons. Mutual
+Salud Total - Emerg. del Sur S.R.L.
+Sancor Salud
+SCIS S.A.
+SOSUNC
+Swiss Medical
+TV Salud
+Word Salud SA
 
-== CONTACTO ==
-WhatsApp: 54 299 5965754
+== INFORMACIÓN DE CONSULTAS Y TRATAMIENTOS ==
+
+Consulta: Sin precio especificado en planilla
+Limpieza dental: Requiere evaluación
+Blanqueamiento: Requiere evaluación
+Restauración / Caries: Requiere evaluación
+Endodoncia: Requiere evaluación
+Extracción: Requiere evaluación
+Implante: Requiere evaluación
+Ortodoncia: Requiere evaluación
+Prótesis: Requiere evaluación
+
+Nota: Los precios requieren consulta con el consultorio directamente.
+      Se recomienda contactar por WhatsApp para solicitar presupuesto.
+
+== HORARIOS ESPECÍFICOS CONOCIDOS ==
+
+Dra. Chiaramonte Maria Laura: Lunes 14:00 a 17:00 hs
+Dra. Daniela Karpovicz: Una vez al mes (día y hora a confirmar)
+
+Nota: Completar horarios de otros profesionales según disponibilidad.
+
+== PROCESO DE RESERVA DE TURNOS ==
+
+1. El paciente contacta por WhatsApp (54 299 6037282)
+2. Se solicita confirmar disponibilidad de turno
+3. Se requiere seña para reservar
+4. Confirmación por WhatsApp o envío de seña
+5. Cancelación/Reprogramación: Con 24 horas de anticipación para no perder seña
+
+== CONTACTO DIRECTO ==
+WhatsApp: 54 299 6037282
 Website: https://www.odontologiamg.ar/
+Ubicación: Hipólito Yrigoyen 557 - (8300) Neuquén
