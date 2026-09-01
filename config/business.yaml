@@ -12,7 +12,7 @@ negocio:
   whatsapp: "54 299 6037282"
 
 agente:
-  nombre: "Iris"
+  nombre: "Marian"
   tono: "amigable y casual"
   casos_de_uso:
     - "Responder preguntas frecuentes sobre el centro, médicos y coberturas"
