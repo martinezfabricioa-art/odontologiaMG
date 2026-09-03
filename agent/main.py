@@ -15,7 +15,11 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 from agent.brain import generar_respuesta
-from agent.memory import inicializar_db, guardar_mensaje, obtener_historial, limpiar_historial, guardar_paciente, obtener_paciente
+from agent.memory import (
+    inicializar_db, guardar_mensaje, obtener_historial, limpiar_historial,
+    guardar_paciente, obtener_paciente, obtener_preguntas_sin_respuesta,
+    actualizar_respuesta_pregunta
+)
 from agent.turnos import buscar_turnos, ver_mis_turnos, reservar_turno, cancelar_turno, get_medico_info
 
 load_dotenv()
@@ -124,7 +128,7 @@ async def chat(req: ChatRequest):
     historial_previo = historial[:-1] if historial else []
 
     # Generar respuesta
-    respuesta = await generar_respuesta(mensaje, historial_previo)
+    respuesta = await generar_respuesta(mensaje, historial_previo, session_id=session_id)
 
     # Guardar respuesta del asistente
     await guardar_mensaje(session_id, "assistant", respuesta)
@@ -253,3 +257,36 @@ async def cancelar_turno_endpoint(req: CancelarTurnoRequest):
     resultado = await cancelar_turno(req.id_turno)
     logger.info(f"Intento de cancelar turno {req.id_turno}: {resultado.get('status')}")
     return resultado
+
+
+# ── Endpoints para Preguntas Sin Respuesta ──────────────────────────────────────
+
+@app.get("/preguntas-sin-respuesta")
+async def obtener_preguntas_no_respondidas():
+    """Obtiene todas las preguntas sin respuesta para revisión."""
+    preguntas = await obtener_preguntas_sin_respuesta(respondidas=False)
+    logger.info(f"Preguntas sin respuesta: {len(preguntas)}")
+    return {"cantidad": len(preguntas), "preguntas": preguntas}
+
+
+@app.get("/preguntas-respondidas")
+async def obtener_preguntas_contestadas():
+    """Obtiene todas las preguntas que ya fueron respondidas."""
+    preguntas = await obtener_preguntas_sin_respuesta(respondidas=True)
+    return {"cantidad": len(preguntas), "preguntas": preguntas}
+
+
+class ActualizarRespuestaRequest(BaseModel):
+    pregunta_id: int
+    respuesta: str
+
+
+@app.post("/preguntas-sin-respuesta/{pregunta_id}")
+async def responder_pregunta(pregunta_id: int, req: ActualizarRespuestaRequest):
+    """Actualiza la respuesta de una pregunta sin respuesta."""
+    if not req.respuesta or not req.respuesta.strip():
+        raise HTTPException(status_code=400, detail="Respuesta es requerida")
+
+    await actualizar_respuesta_pregunta(pregunta_id, req.respuesta)
+    logger.info(f"Pregunta {pregunta_id} respondida")
+    return {"status": "ok", "message": "Pregunta respondida"}

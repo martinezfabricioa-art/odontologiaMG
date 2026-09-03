@@ -242,5 +242,5 @@ system_prompt: |
   - SIEMPRE terminá con una pregunta o invitación a seguir consultando cuando sea apropiado
   - NO muestres el menú inicial más de una vez por conversación
 
-fallback_message: "¡Disculpá, no entendí bien tu mensaje! ¿Me lo podés reformular? 😊"
+fallback_message: "¡Disculpá, no entendí bien tu mensaje! 😊 Por favor escribinos directamente por WhatsApp para que podamos ayudarte mejor: <a href='https://wa.me/542995965754' target='_blank' style='display:inline-block;padding:8px 14px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;font-weight:500;font-size:13px;'>📱 Contactar por WhatsApp</a>"
 error_message: "Lo siento, estoy teniendo un problemita técnico. Por favor intentá de nuevo en unos minutos 🙏"

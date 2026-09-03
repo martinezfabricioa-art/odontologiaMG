@@ -10,6 +10,7 @@ import yaml
 import logging
 from anthropic import AsyncAnthropic
 from dotenv import load_dotenv
+from agent.memory import guardar_pregunta_sin_respuesta
 
 load_dotenv()
 logger = logging.getLogger("agentkit")
@@ -51,13 +52,14 @@ def obtener_mensaje_fallback() -> str:
     return config.get("fallback_message", "¡Disculpá, no entendí bien tu mensaje! ¿Me lo podés reformular? 😊")
 
 
-async def generar_respuesta(mensaje: str, historial: list[dict]) -> str:
+async def generar_respuesta(mensaje: str, historial: list[dict], session_id: str = None) -> str:
     """
     Genera una respuesta usando Claude API.
 
     Args:
         mensaje: El mensaje nuevo del usuario
         historial: Lista de mensajes anteriores [{"role": "user/assistant", "content": "..."}]
+        session_id: ID de sesión para guardar preguntas sin respuesta (opcional)
 
     Returns:
         La respuesta generada por Claude
@@ -90,6 +92,13 @@ async def generar_respuesta(mensaje: str, historial: list[dict]) -> str:
 
         respuesta = response.content[0].text
         logger.info(f"Respuesta generada ({response.usage.input_tokens} in / {response.usage.output_tokens} out)")
+
+        # Si la respuesta es fallback, guardar la pregunta para revisión
+        fallback_msg = obtener_mensaje_fallback()
+        if respuesta == fallback_msg and session_id:
+            await guardar_pregunta_sin_respuesta(session_id, mensaje)
+            logger.info(f"Pregunta sin respuesta guardada (session: {session_id})")
+
         return respuesta
 
     except Exception as e:

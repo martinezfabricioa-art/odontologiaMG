@@ -52,6 +52,18 @@ class Paciente(Base):
     timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
 
+class PreguntaSinRespuesta(Base):
+    """Modelo para guardar preguntas sin respuesta para revisión semanal."""
+    __tablename__ = "preguntas_sin_respuesta"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    session_id: Mapped[str] = mapped_column(String(100), index=True)
+    pregunta: Mapped[str] = mapped_column(Text)
+    respuesta: Mapped[str] = mapped_column(Text, nullable=True)
+    respondida: Mapped[bool] = mapped_column(default=False)
+    timestamp: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+
+
 async def inicializar_db():
     """Crea las tablas si no existen."""
     async with engine.begin() as conn:
@@ -151,3 +163,52 @@ async def obtener_paciente(session_id: str) -> dict:
                 "es_paciente": paciente.es_paciente
             }
         return None
+
+
+async def guardar_pregunta_sin_respuesta(session_id: str, pregunta: str):
+    """Guarda una pregunta que no pudo ser respondida."""
+    async with async_session() as session:
+        pregunta_obj = PreguntaSinRespuesta(
+            session_id=session_id,
+            pregunta=pregunta,
+            timestamp=datetime.utcnow()
+        )
+        session.add(pregunta_obj)
+        await session.commit()
+
+
+async def obtener_preguntas_sin_respuesta(respondidas: bool = False) -> list[dict]:
+    """Obtiene preguntas sin respuesta. Si respondidas=True, obtiene las respondidas."""
+    async with async_session() as session:
+        query = (
+            select(PreguntaSinRespuesta)
+            .where(PreguntaSinRespuesta.respondida == respondidas)
+            .order_by(PreguntaSinRespuesta.timestamp.desc())
+        )
+        result = await session.execute(query)
+        preguntas = result.scalars().all()
+
+        return [
+            {
+                "id": p.id,
+                "session_id": p.session_id,
+                "pregunta": p.pregunta,
+                "respuesta": p.respuesta,
+                "respondida": p.respondida,
+                "timestamp": p.timestamp.isoformat()
+            }
+            for p in preguntas
+        ]
+
+
+async def actualizar_respuesta_pregunta(pregunta_id: int, respuesta: str):
+    """Actualiza la respuesta de una pregunta sin respuesta."""
+    async with async_session() as session:
+        query = select(PreguntaSinRespuesta).where(PreguntaSinRespuesta.id == pregunta_id)
+        result = await session.execute(query)
+        pregunta = result.scalar()
+
+        if pregunta:
+            pregunta.respuesta = respuesta
+            pregunta.respondida = True
+            await session.commit()
