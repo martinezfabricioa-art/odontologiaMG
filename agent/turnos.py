@@ -11,7 +11,7 @@ from typing import Optional
 
 logger = logging.getLogger("agentkit")
 
-API_URL = "http://odontologiamg.ar/assets/agenteWeb007.php"
+API_URL = "https://odontologiamg.ar/assets/agenteWeb007.php"
 
 # Mapeo de médicos
 MEDICOS = {
