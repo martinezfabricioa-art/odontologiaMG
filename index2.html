@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odontología MG | Consultorio Odontológico en Neuquén</title>
+  <meta name="description" content="Consultorio odontológico especializado en cirugía maxilofacial, ortodoncia invisible, implantes y más en Neuquén.">
+  <meta name="keywords" content="odontólogo Neuquén, dentista Neuquén, implantes, ortodoncia, cirugía maxilofacial">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #FAFBFC;
+      --bg2:      #FFFFFF;
+      --bg3:      #FEF5F8;
+      --border:   rgba(0,0,0,0.06);
+      --text:     #1A2332;
+      --text-light: #5A6B7A;
+      --accent:   #A81D4E;
+      --accent2:  #E885B8;
+      --accent3:  #D4537C;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', sans-serif;
+      --mono:     'IBM Plex Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .header-nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .header-nav a:hover {
+      color: var(--accent);
+    }
+
+    .header-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: #8B1A3F;
+      box-shadow: 0 0 20px rgba(168,29,78,0.4);
+    }
+
+    /* ── MAIN CONTENT ── */
+    main { margin-top: 70px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: calc(100vh - 70px);
+      background: linear-gradient(135deg, #E885B8 0%, #A81D4E 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: 3rem;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      padding: 1rem 2rem;
+      background: white;
+      color: var(--accent);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+    }
+
+    .hero-image {
+      background: rgba(255,255,255,0.1);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.2);
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ── SERVICIOS ── */
+    .servicios {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      text-align: center;
+      animation: fadeUp 0.6s ease-out;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .servicios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .servicio-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeUp 0.6s ease-out;
+    }
+
+    .servicio-card:nth-child(1) { animation-delay: 0.1s; }
+    .servicio-card:nth-child(2) { animation-delay: 0.2s; }
+    .servicio-card:nth-child(3) { animation-delay: 0.3s; }
+    .servicio-card:nth-child(4) { animation-delay: 0.4s; }
+    .servicio-card:nth-child(5) { animation-delay: 0.5s; }
+    .servicio-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .servicio-card:hover {
+      box-shadow: 0 10px 30px rgba(168,29,78,0.15);
+      border-color: var(--accent2);
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, white 0%, rgba(232,133,184,0.05) 100%);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .servicio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background-size: 1000px 100%;
+      animation: shimmer 3s infinite;
+      opacity: 0;
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .servicio-card:hover::before {
+      opacity: 1;
+    }
+
+    .servicio-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .servicio-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--accent);
+    }
+
+    .servicio-card p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ── ESPECIALIDAD ── */
+    .especialidad {
+      background: var(--bg3);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .especialidad-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .especialidad h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .especialidad p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    /* ── EQUIPO ── */
+    .equipo {
+      padding: 5rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .equipo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .equipo-member {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .member-image {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #E885B8 0%, #A81D4E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .member-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .member-info p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* ── CONTACTO ── */
+    .contacto {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .contacto-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .info-item {
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      min-width: 30px;
+    }
+
+    .info-text p {
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .info-text p:first-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .horarios {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .horarios h4 {
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .horario-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+      font-size: 0.9rem;
+    }
+
+    .horario-item:last-child {
+      border-bottom: none;
+    }
+
+    .horario-dia {
+      font-weight: 600;
+      min-width: 80px;
+    }
+
+    .horario-hora {
+      color: var(--text-light);
+      text-align: right;
+    }
+
+    .formulario {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,151,178,0.1);
+    }
+
+    .btn-submit {
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: #008399;
+    }
+
+    /* ── MAPA ── */
+    .mapa-container {
+      width: 100%;
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* ── WHATSAPP BUTTON ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.8rem;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent2);
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .footer-socials a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-socials a:hover {
+      opacity: 0.8;
+    }
+
+    .footer-contact {
+      color: rgba(255,255,255,0.8);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .footer-copyright {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      .header-logo {
+        font-size: 1.1rem;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .header-cta {
+        gap: 0.5rem;
+      }
+
+      .btn-primary {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      main {
+        margin-top: 60px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-white {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .servicios {
+        padding: 3rem 1rem;
+      }
+
+      .contacto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp-float {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="header-logo">
+      <img src="logoMG.png" style="height: 36px;" alt="Logo Odontología MG">
+      <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px;">ODONTOLOGIA MG</span>
+    </a>
+    <nav class="header-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#turno" class="btn-primary">Solicitar Turno</a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>Tu sonrisa en las mejores manos</h1>
+        <p>Atención odontológica integral y especializada en el corazón de Neuquén. Nuestro equipo de profesionales te brinda la confianza que mereces.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/542996037282" class="btn-white">Contactar por WhatsApp</a>
+          <a href="#turno" class="btn-white">Agendar Turno</a>
+        </div>
+      </div>
+      <div class="hero-image" style="background: linear-gradient(135deg, var(--accent3) 0%, var(--accent2) 100%); background-image: url('imagenes/consul.jpg'); background-size: cover; background-position: center;">
+      </div>
+    </section>
+
+    <!-- ESPECIALIDAD -->
+    <section class="especialidad">
+      <div class="especialidad-content">
+        <h2>Liderado por la Dra. Mariana Gómez</h2>
+        <p>Especialista en Cirugía Maxilofacial con amplia experiencia. Contamos con tecnología de punta y un equipo dedicado que responde a las necesidades más complejas en odontología. Cada tratamiento está diseñado para ti.</p>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <p class="section-subtitle">Soluciones integrales para tu salud bucal</p>
+
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <div class="servicio-icon">🪥</div>
+          <h3>Odontología General</h3>
+          <p>Limpiezas, obturaciones y mantenimiento integral de tu salud bucal.</p>
+        </div>
+
+        <div class="servicio-card">
+          <div class="servicio-icon">😁</div>
+          <h3>Ortodoncia Invisible</h3>
+          <p>Alineación perfecta sin brackets. Sonríe con confianza durante tu tratamiento.</p>
+        </div>
+
+        <div class="servicio-card">
+          <div class="servicio-icon">🦷</div>
+          <h3>Implantes Dentales</h3>
+          <p>Recupera tus dientes perdidos con implantes de alta calidad y durabilidad.</p>
+        </div>
+
+        <div class="servicio-card">
+          <div class="servicio-icon">✨</div>
+          <h3>Estética Dental</h3>
+          <p>Blanqueamiento profesional y carillas estéticas para tu sonrisa de ensueño.</p>
+        </div>
+
+        <div class="servicio-card">
+          <div class="servicio-icon">🔧</div>
+          <h3>Endodoncia</h3>
+          <p>Tratamientos de conductos preservando tu diente natural con máxima precisión.</p>
+        </div>
+
+        <div class="servicio-card">
+          <div class="servicio-icon">👄</div>
+          <h3>Bichectomía</h3>
+          <p>Reducción de volumen facial para resaltar tus facciones de forma armoniosa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPO -->
+    <section class="equipo" id="equipo">
+      <h2 class="section-title">Nuestro Equipo</h2>
+      <p class="section-subtitle">Profesionales dedicados a tu bienestar</p>
+
+      <div class="equipo-grid">
+        <div class="equipo-member">
+          <div class="member-image" style="background: linear-gradient(135deg, var(--accent3) 0%, var(--accent2) 100%); background-image: url('imagenes/mariana.PNG'); background-size: cover; background-position: center;">
+          </div>
+          <div class="member-info">
+            <h3>Dra. Mariana Gómez</h3>
+            <p>Especialista en Cirugía Maxilofacial • Propietaria</p>
+          </div>
+        </div>
+
+        <div class="equipo-member">
+		  <div class="member-image" style="background: linear-gradient(135deg, var(--accent3) 0%, var(--accent2) 100%); background-image: url('imagenes/equipo.PNG'); background-size: cover; background-position: center;">
+          </div>
+          <div class="member-info">
+            <h3>Equipo Especializado</h3>
+            <p>Profesionales en Ortodoncia e Implantología</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+      <h2 class="section-title">Ubicación y Contacto</h2>
+
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <h3>Información de Contacto</h3>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <p>Dirección</p>
+              <p>Hipólito Yrigoyen 557, Q8300 Neuquén</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+              <p>Teléfono</p>
+              <p>(0299) 603-7282</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">💬</div>
+            <div class="info-text">
+              <p>WhatsApp</p>
+              <p><a href="https://wa.me/542996037282" style="color: var(--accent); text-decoration: none;">+54 9 2996037282</a></p>
+            </div>
+          </div>
+
+          <div class="horarios">
+            <h4>Horarios de Atención</h4>
+            <div class="horario-item">
+              <span class="horario-dia">Lunes</span>
+              <span class="horario-hora">9:00 - 21:00</span>
+            </div>
+            <div class="horario-item">
+              <span class="horario-dia">Martes</span>
+              <span class="horario-hora">9:00 - 21:00</span>
+            </div>
+            <div class="horario-item">
+              <span class="horario-dia">Miércoles</span>
+              <span class="horario-hora">9:00 - 21:00</span>
+            </div>
+            <div class="horario-item">
+              <span class="horario-dia">Jueves</span>
+              <span class="horario-hora">9:00 - 21:00</span>
+            </div>
+            <div class="horario-item">
+              <span class="horario-dia">Viernes</span>
+              <span class="horario-hora">9:00 - 21:00</span>
+            </div>
+      
+          </div>
+        </div>
+
+        <form id="turno" class="formulario" onsubmit="handleFormSubmit(event)">
+          <h3>Solicita tu Turno</h3>
+
+          <div class="form-group">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email (opcional)</label>
+            <input type="email" id="email" name="email">
+          </div>
+
+          <div class="form-group">
+            <label for="servicio">Servicio de Interés</label>
+            <select id="servicio" name="servicio" required>
+              <option value="">Selecciona un servicio</option>
+              <option value="general">Odontología General</option>
+              <option value="ortodoncia">Ortodoncia Invisible</option>
+              <option value="implantes">Implantes Dentales</option>
+              <option value="estetica">Estética Dental</option>
+              <option value="endodoncia">Endodoncia</option>
+              <option value="bichectomia">Bichectomía</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Consulta</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Agendar Consulta</button>
+        </form>
+      </div>
+
+      <div class="mapa-container" style="margin-top: 3rem;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3063.5832097437485!2d-68.07139!3d-38.95161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a346c1c1c1c1d%3A0x1c1c1c1c1c1c1c1c!2sHip%C3%B3lito%20Yrigoyen%20557%2C%20Q8300%20Neuqu%C3%A9n!5e0!3m2!1ses!2sar!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
+
+<script>
+  window.AgentKitConfig = {
+    apiUrl: "https://odontologiamg-production-e4bf.up.railway.app",
+    title: "Odontologia MG",
+    subtitle: "¿En qué te puedo ayudar?",
+    primaryColor: "#1d4ed8"
+  };
+</script>
+<script src="https://odontologiamg-production-e4bf.up.railway.app/widget/widget.js"></script>
+
+
+  <!-- WHATSAPP BUTTON 
+  <a href="https://wa.me/542996037282" class="whatsapp-float" title="Contactar por WhatsApp">
+    💬
+  </a>-->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+        <img src="logoMG.png" style="height: 28px; opacity: 0.9;" alt="Logo Odontología MG">
+        <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;">ODONTOLOGIAMG</span>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://instagram.com/odontologiamg.nqn" target="_blank" title="Instagram">📷</a>
+        <a href="https://wa.me/542996037282" title="WhatsApp">💬</a>
+        <a href="tel:+542996037282" title="Llamar">☎️</a>
+      </div>
+
+      <div class="footer-contact">
+        <p>Hipólito Yrigoyen 557, Neuquén • (0299) 603-7282</p>
+        <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f060109002f000b00011b00030008060e0208410c0002">[email&#160;protected]</a></p>
+      </div>
+
+      <div class="footer-copyright">
+        <p>&copy; 2024 Odontología MG. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+      const servicio = document.getElementById('servicio').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      const whatsappMessage = `Hola, me gustaría agendar un turno en Odontología MG. Nombre: ${nombre}, Teléfono: ${telefono}, Servicio: ${servicio}, Consulta: ${mensaje}`;
+      const whatsappUrl = `https://wa.me/542996037282?text=${encodeURIComponent(whatsappMessage)}`;
+
+      window.open(whatsappUrl, '_blank');
+
+      // Reset formulario
+      document.querySelector('.formulario').reset();
+    }
+  </script>
+  
+
+</body>
+</html>

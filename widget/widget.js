@@ -608,6 +608,36 @@
     input.style.height = Math.min(input.scrollHeight, 100) + "px";
   }
 
+  function attachMenuListeners() {
+    setTimeout(function() {
+      var allAssistantMsgs = messages.querySelectorAll(".ak-msg.assistant");
+      if (allAssistantMsgs.length === 0) return;
+
+      var lastMsg = allAssistantMsgs[allAssistantMsgs.length - 1];
+      var divs = lastMsg.querySelectorAll("div");
+
+      var menuOptions = {
+        "A- SOLICITAR UN TURNO": "A",
+        "B- CONSULTAR OBRA SOCIAL": "B",
+        "C- CONSULTAR VALORES": "C",
+        "D- SERVICIOS DISPONIBLES": "D",
+        "F- OTRAS CONSULTAS": "F"
+      };
+
+      divs.forEach(function(div) {
+        var text = div.textContent.trim();
+        if (menuOptions[text]) {
+          div.style.cursor = "pointer";
+          div.addEventListener("click", function(e) {
+            e.stopPropagation();
+            input.value = menuOptions[text];
+            sendMessage();
+          });
+        }
+      });
+    }, 50);
+  }
+
   // ── Abrir / cerrar ─────────────────────────────────────────────────────────
   function openPanel() {
     isOpen = true;
@@ -619,6 +649,7 @@
     if (!greeted) {
       greeted = true;
       addMessage("assistant", "¡Hola! 👋 Soy Marian, la asistente virtual de Odontologia MG. ¿En qué te puedo ayudar hoy?\n\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>A- SOLICITAR UN TURNO</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>B- CONSULTAR OBRA SOCIAL</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>C- CONSULTAR VALORES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>D- SERVICIOS DISPONIBLES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;cursor:pointer;'>F- OTRAS CONSULTAS</div>");
+      attachMenuListeners();
     }
   }
 
