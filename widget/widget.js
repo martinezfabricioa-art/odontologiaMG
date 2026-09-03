@@ -458,6 +458,20 @@
     btnElement.textContent = "⏳ Reservando...";
     btnElement.disabled = true;
 
+    // Extraer fecha y hora del turno desde el texto del span anterior
+    var turnoItem = btnElement.closest(".turno-item");
+    var turnoText = turnoItem ? turnoItem.querySelector("span").textContent : "";
+    // turnoText format: "Viernes 17/11/2025 - 14:00 hs"
+    var dateMatch = turnoText.match(/(\d{2})\/(\d{2})\/(\d{4})\s*-\s*(\d{2}):(\d{2})/);
+    var turnoData = null;
+    if (dateMatch) {
+      turnoData = {
+        fecha: turnoText.split(" - ")[0].trim(),
+        hora: dateMatch[4] + ":" + dateMatch[5],
+        fechaISO: dateMatch[3] + dateMatch[2] + dateMatch[1] + "T" + dateMatch[4] + dateMatch[5]
+      };
+    }
+
     fetch(API_URL + "/turnos/reservar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -470,6 +484,30 @@
         if (data.status === "success") {
           btnElement.textContent = "✅ Reservado";
           btnElement.style.backgroundColor = "#22c55e";
+
+          // Agregar botón de agendar recordatorio si tenemos los datos
+          if (turnoData) {
+            var calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE" +
+              "&text=Turno Odontologia MG" +
+              "&dates=" + turnoData.fechaISO + "/" + turnoData.fechaISO +
+              "&details=Turno reservado en Odontologia MG%0ARecuerda presentar comprobante de seña";
+
+            var calendarBtn = document.createElement("a");
+            calendarBtn.href = calendarLink;
+            calendarBtn.target = "_blank";
+            calendarBtn.style.display = "inline-block";
+            calendarBtn.style.marginTop = "8px";
+            calendarBtn.style.marginLeft = "8px";
+            calendarBtn.style.padding = "8px 14px";
+            calendarBtn.style.backgroundColor = "#7c3aed";
+            calendarBtn.style.color = "white";
+            calendarBtn.style.borderRadius = "6px";
+            calendarBtn.style.textDecoration = "none";
+            calendarBtn.style.fontWeight = "500";
+            calendarBtn.style.fontSize = "13px";
+            calendarBtn.textContent = "📅 Agendar recordatorio";
+            btnElement.parentNode.insertBefore(calendarBtn, btnElement.nextSibling);
+          }
         } else {
           btnElement.textContent = "❌ Error: " + data.message;
           btnElement.style.backgroundColor = "#ef4444";

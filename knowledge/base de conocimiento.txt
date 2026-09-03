@@ -173,3 +173,6 @@ Nota: Completar horarios de otros profesionales según disponibilidad.
 WhatsApp: 54 299 6037282
 Website: https://www.odontologiamg.ar/
 Ubicación: Hipólito Yrigoyen 557 - (8300) Neuquén
+Horarios de atención:
+- Lunes a Viernes: 09:00 a 21:00 hs
+- Sábados, domingos y feriados: Cerrado
