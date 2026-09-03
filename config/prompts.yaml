@@ -104,31 +104,36 @@ system_prompt: |
   **Paso 2A.3:** De acuerdo al servicio elegido, mostrar profesionales:
 
   **Para Odontología General:**
-  👩‍⚕️ Dra. Chiaramonte Maria Laura - ID: 9
-  👩‍⚕️ Dra. Lerma Analia - ID: 21
-  👩‍⚕️ Dra. Mariana Levian Vera - ID: 22
-  👩‍⚕️ Dra. Daniela Karpovicz - ID: 24
-  👩‍⚕️ Dra. Lucia Lopez - ID: 25
-  👨‍⚕️ Dr. Carrion Santiago - ID: 26
-  👨‍⚕️ Dr. Porte Alejandro - ID: 28
-  👩‍⚕️ Dra. Villagra Lucila - ID: 29
-  👩‍⚕️ Dra. Nuñez Guadalupe - ID: 31
-  👨‍⚕️ Dr. Pedone Felipe - ID: 32
   👩‍⚕️ Dra. Ulloa Julieta - ID: 33
+  👩‍⚕️ Dra. Villagra Lucila - ID: 29
+  👨‍⚕️ Dr. Pedone Felipe - ID: 32
+  👩‍⚕️ Dra. Lerma Analia - ID: 21
 
-  **Para Implantes, Ortodoncia, Periodoncia, Estética, Prótesis:**
+  **Para Ortodoncia:**
+  👩‍⚕️ Dra. Chiaramonte Maria Laura (Ortodoncia fija/removible) - ID: 9
+  👩‍⚕️ Dra. Daniela Karpovicz (Ortodoncia Invisible) - ID: 24
+
+  **Para Implantes:**
   👩‍⚕️ Dra. Gomez Mariana - ID: 2
 
+  **Para Periodoncia:**
+  👩‍⚕️ Dra. Lucia Lopez - ID: 25
+
   **Para Endodoncia:**
-  ⚠️ NO MOSTRAR TURNOS. En su lugar:
+  👨‍⚕️ Dr. Porte Alejandro - ID: 28
+  👨‍⚕️ Dr. Carrion Santiago - ID: 26
+
+  **Para Endodoncia:**
+  ⚠️ NO MOSTRAR TURNOS ONLINE. En su lugar:
   Primero pedí nombre y apellido si no los tiene. Luego:
   "Para endodoncia debés consultar directamente con nuestro equipo.
   <a href='https://wa.me/542995965754?text=Endodoncia%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar Endodoncia por WhatsApp</a>"
 
-  **Paso 2A.4:** Si el servicio es Implantes/Ortodoncia/Periodoncia/Estética/Prótesis (Dra. Gomez Mariana):
-  ⚠️ ESPECIAL: Primero pedí nombre y apellido si no los tiene. Luego:
-  "Para este servicio debés consultar con la Dra. Gomez Mariana directamente.
-  <a href='https://wa.me/542995965754?text=Turno%20con%20Gomez%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar con Gomez por WhatsApp</a>"
+  **Para Implantes (Dra. Gomez Mariana):
+  ⚠️ NO MOSTRAR TURNOS ONLINE. En su lugar:
+  Primero pedí nombre y apellido si no los tiene. Luego:
+  "Los implantes requieren una consulta previa. Contactá directamente con la Dra. Gomez Mariana.
+  <a href='https://wa.me/542995965754?text=Turno%20con%20Gomez%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar Implantes con Gomez</a>"
 
   **Paso 2A.5:** Para otros servicios (Odontología General):
   "Buscando turnos disponibles...
