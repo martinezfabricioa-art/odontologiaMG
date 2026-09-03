@@ -508,6 +508,18 @@
             calendarBtn.textContent = "📅 Agendar recordatorio";
             btnElement.parentNode.insertBefore(calendarBtn, btnElement.nextSibling);
           }
+
+          // Agregar nota sobre comprobante de seña
+          var noteDiv = document.createElement("div");
+          noteDiv.style.marginTop = "12px";
+          noteDiv.style.padding = "10px";
+          noteDiv.style.backgroundColor = "#fef3c7";
+          noteDiv.style.borderRadius = "6px";
+          noteDiv.style.borderLeft = "4px solid #f59e0b";
+          noteDiv.style.fontSize = "13px";
+          noteDiv.style.color = "#92400e";
+          noteDiv.innerHTML = "<strong>⚠️ Importante:</strong> Debe enviar el comprobante de pago de la seña para que su turno sea confirmado.";
+          btnElement.closest(".turno-item").parentNode.insertBefore(noteDiv, btnElement.closest(".turno-item").nextSibling);
         } else {
           btnElement.textContent = "❌ Error: " + data.message;
           btnElement.style.backgroundColor = "#ef4444";
