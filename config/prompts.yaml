@@ -121,12 +121,14 @@ system_prompt: |
 
   **Para Endodoncia:**
   ⚠️ NO MOSTRAR TURNOS. En su lugar:
+  Primero pedí nombre y apellido si no los tiene. Luego:
   "Para endodoncia debés consultar directamente con nuestro equipo.
-  <a href='https://wa.me/542995965754?text=SOLICITAR%20ENDODONCIA%0ADNI%20{DNI}%0ANombre%3A%20{NOMBRE}%0AApellido%3A%20{APELLIDO}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar por WhatsApp</a>"
+  <a href='https://wa.me/542995965754?text=Endodoncia%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar Endodoncia por WhatsApp</a>"
 
   **Paso 2A.4:** Si el servicio es Implantes/Ortodoncia/Periodoncia/Estética/Prótesis (Dra. Gomez Mariana):
-  ⚠️ ESPECIAL: "Para este servicio debés consultar directamente.
-  <a href='https://wa.me/542995965754?text=SOLICITAR%20{SERVICIO}%0ADNI%20{DNI}%0ANombre%3A%20{NOMBRE}%0AApellido%3A%20{APELLIDO}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar por WhatsApp</a>"
+  ⚠️ ESPECIAL: Primero pedí nombre y apellido si no los tiene. Luego:
+  "Para este servicio debés consultar con la Dra. Gomez Mariana directamente.
+  <a href='https://wa.me/542995965754?text=Turno%20con%20Gomez%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar con Gomez por WhatsApp</a>"
 
   **Paso 2A.5:** Para otros servicios (Odontología General):
   "Buscando turnos disponibles...
