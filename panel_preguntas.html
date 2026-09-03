@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Preguntas - Odontologia MG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .api-url {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: #666;
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .tab-btn:hover {
+            border-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .pregunta-text {
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .metadata {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .respuesta-area {
+            margin-top: 15px;
+        }
+
+        .respuesta-area label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .respuesta-area textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s;
+        }
+
+        .respuesta-area textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .respuesta-respondida {
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #22c55e;
+            margin-top: 15px;
+        }
+
+        .respuesta-respondida strong {
+            color: #16a34a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .respuesta-respondida p {
+            color: #166534;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .error {
+            background: #fef2f2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ef4444;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #22c55e;
+            margin-bottom: 20px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦷 Panel de Preguntas - Odontologia MG</h1>
+            <p>Gestiona las preguntas que Marian no pudo responder y enseñale nuevas respuestas</p>
+            <div class="api-url">
+                <strong>URL API:</strong> https://odontologiamg-production-e4bf.up.railway.app
+            </div>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="stat-sin-respuesta">-</div>
+                <div class="stat-label">Sin responder</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat-respondidas">-</div>
+                <div class="stat-label">Respondidas</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('sin-respuesta')">❓ Sin Respuesta</button>
+            <button class="tab-btn" onclick="switchTab('respondidas')">✅ Respondidas</button>
+        </div>
+
+        <div id="sin-respuesta" class="tab-content active">
+            <div id="sin-respuesta-content"></div>
+        </div>
+
+        <div id="respondidas" class="tab-content">
+            <div id="respondidas-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://odontologiamg-production-e4bf.up.railway.app';
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabName === 'sin-respuesta') {
+                cargarPreguntasSinRespuesta();
+            } else {
+                cargarPreguntasRespondidas();
+            }
+        }
+
+        async function cargarPreguntasSinRespuesta() {
+            const container = document.getElementById('sin-respuesta-content');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div> Cargando preguntas...</div>';
+
+            try {
+                const res = await fetch(`${API_URL}/preguntas-sin-respuesta`);
+                const data = await res.json();
+
+                actualizarStats();
+
+                if (data.preguntas.length === 0) {
+                    container.innerHTML = `
+                        <div class="card">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">✨</div>
+                                <p>¡Sin preguntas sin responder!</p>
+                                <small>Marian está respondiendo todas las consultas correctamente</small>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                data.preguntas.forEach(pregunta => {
+                    html += crearCardPregunta(pregunta);
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                container.innerHTML = `<div class="error">❌ Error al cargar preguntas: ${error.message}</div>`;
+            }
+        }
+
+        async function cargarPreguntasRespondidas() {
+            const container = document.getElementById('respondidas-content');
+            container.innerHTML = '<div class="loading"><div class="spinner"></div> Cargando preguntas respondidas...</div>';
+
+            try {
+                const res = await fetch(`${API_URL}/preguntas-respondidas`);
+                const data = await res.json();
+
+                if (data.preguntas.length === 0) {
+                    container.innerHTML = `
+                        <div class="card">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">📭</div>
+                                <p>No hay preguntas respondidas aún</p>
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+                data.preguntas.forEach(pregunta => {
+                    html += crearCardPreguntaRespondida(pregunta);
+                });
+                container.innerHTML = html;
+            } catch (error) {
+                container.innerHTML = `<div class="error">❌ Error al cargar preguntas: ${error.message}</div>`;
+            }
+        }
+
+        function crearCardPregunta(pregunta) {
+            const fecha = new Date(pregunta.timestamp).toLocaleDateString('es-AR');
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <div class="pregunta-text">"${pregunta.pregunta}"</div>
+                        <div class="metadata">
+                            <span>📅 ${fecha}</span>
+                            <span>🔑 ID: ${pregunta.id}</span>
+                        </div>
+                    </div>
+                    <div class="respuesta-area">
+                        <label>✍️ Tu respuesta:</label>
+                        <textarea id="respuesta-${pregunta.id}" placeholder="Escribe la respuesta que Marian debería haber dado..."></textarea>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn-primary" onclick="guardarRespuesta(${pregunta.id})">
+                            💾 Guardar respuesta
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function crearCardPreguntaRespondida(pregunta) {
+            const fecha = new Date(pregunta.timestamp).toLocaleDateString('es-AR');
+            return `
+                <div class="card">
+                    <div class="card-header">
+                        <div class="pregunta-text">"${pregunta.pregunta}"</div>
+                        <div class="metadata">
+                            <span>📅 ${fecha}</span>
+                            <span>🔑 ID: ${pregunta.id}</span>
+                        </div>
+                    </div>
+                    <div class="respuesta-respondida">
+                        <strong>✅ Respuesta guardada:</strong>
+                        <p>${pregunta.respuesta}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function guardarRespuesta(preguntaId) {
+            const textarea = document.getElementById(`respuesta-${preguntaId}`);
+            const respuesta = textarea.value.trim();
+
+            if (!respuesta) {
+                alert('Por favor escribe una respuesta');
+                return;
+            }
+
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div> Guardando...';
+
+            try {
+                const res = await fetch(`${API_URL}/preguntas-sin-respuesta/${preguntaId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ pregunta_id: preguntaId, respuesta })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    mostrarExito('✅ Respuesta guardada exitosamente. Marian ya puede responder esta pregunta en el futuro');
+                    setTimeout(() => cargarPreguntasSinRespuesta(), 1500);
+                } else {
+                    throw new Error(data.detail || 'Error al guardar');
+                }
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+                btn.disabled = false;
+                btn.innerHTML = '💾 Guardar respuesta';
+            }
+        }
+
+        function mostrarExito(mensaje) {
+            const container = document.getElementById('sin-respuesta-content');
+            const div = document.createElement('div');
+            div.className = 'success';
+            div.textContent = mensaje;
+            container.insertBefore(div, container.firstChild);
+            setTimeout(() => div.remove(), 5000);
+        }
+
+        async function actualizarStats() {
+            try {
+                const res1 = await fetch(`${API_URL}/preguntas-sin-respuesta`);
+                const res2 = await fetch(`${API_URL}/preguntas-respondidas`);
+                const data1 = await res1.json();
+                const data2 = await res2.json();
+
+                document.getElementById('stat-sin-respuesta').textContent = data1.cantidad;
+                document.getElementById('stat-respondidas').textContent = data2.cantidad;
+            } catch (error) {
+                console.error('Error actualizando stats:', error);
+            }
+        }
+
+        // Cargar datos iniciales
+        cargarPreguntasSinRespuesta();
+        actualizarStats();
+    </script>
+</body>
+</html>
