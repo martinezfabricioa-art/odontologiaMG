@@ -1,15 +1,15 @@
-/**
- * Odontologia MG AgentKit — Widget de Chat Embebible
+﻿/**
+ * Odontologia MG AgentKit â€” Widget de Chat Embebible
  *
  * Uso:
  *   <script src="https://tu-backend.railway.app/widget/widget.js"></script>
  *
- * Configuración opcional (antes del script):
+ * ConfiguraciÃ³n opcional (antes del script):
  *   <script>
  *     window.AgentKitConfig = {
- *       apiUrl: "https://tu-backend.railway.app",  // requerido si no está embebido
+ *       apiUrl: "https://tu-backend.railway.app",  // requerido si no estÃ¡ embebido
  *       title: "Odontologia MG",
- *       subtitle: "¿En qué te puedo ayudar?",
+ *       subtitle: "Â¿En quÃ© te puedo ayudar?",
  *       primaryColor: "#2563eb",
  *       position: "right"  // "right" o "left"
  *     };
@@ -19,15 +19,15 @@
 (function () {
   "use strict";
 
-  // ── Configuración ────────────────────────────────────────────────────────
+  // â”€â”€ ConfiguraciÃ³n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var config = window.AgentKitConfig || {};
   var API_URL = (config.apiUrl || "http://localhost:8000").replace(/\/$/, "");
   var TITLE = config.title || "Odontologia MG";
-  var SUBTITLE = config.subtitle || "¿En qué te puedo ayudar? 🦷";
+  var SUBTITLE = config.subtitle || "Â¿En quÃ© te puedo ayudar? ðŸ¦·";
   var PRIMARY = config.primaryColor || "#1d4ed8";
   var POSITION = config.position === "left" ? "left" : "right";
 
-  // ── Session ID ────────────────────────────────────────────────────────────
+  // â”€â”€ Session ID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function getSessionId() {
     var key = "agentkit_session_id";
     var id = localStorage.getItem(key);
@@ -40,7 +40,7 @@
 
   var sessionId = getSessionId();
 
-  // ── Estilos ───────────────────────────────────────────────────────────────
+  // â”€â”€ Estilos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var css = `
     #agentkit-widget * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 
@@ -280,25 +280,25 @@
     }
   `;
 
-  // ── Inyectar CSS ───────────────────────────────────────────────────────────
+  // â”€â”€ Inyectar CSS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var style = document.createElement("style");
   style.textContent = css;
   document.head.appendChild(style);
 
-  // ── HTML del widget ────────────────────────────────────────────────────────
+  // â”€â”€ HTML del widget â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var wrapper = document.createElement("div");
   wrapper.id = "agentkit-widget";
   wrapper.innerHTML = `
-    <button id="agentkit-btn" aria-label="Abrir chat">💬</button>
+    <button id="agentkit-btn" aria-label="Abrir chat">ðŸ’¬</button>
 
     <div id="agentkit-panel" role="dialog" aria-label="Chat de asistencia" aria-hidden="true">
       <div id="agentkit-header">
-        <div id="agentkit-header-avatar">🦷</div>
+        <div id="agentkit-header-avatar">ðŸ¦·</div>
         <div id="agentkit-header-info">
           <div id="agentkit-header-title">${TITLE}</div>
           <div id="agentkit-header-sub">${SUBTITLE}</div>
         </div>
-        <button id="agentkit-close" aria-label="Cerrar chat">✕</button>
+        <button id="agentkit-close" aria-label="Cerrar chat">âœ•</button>
       </div>
 
       <div id="agentkit-messages" role="log" aria-live="polite"></div>
@@ -306,7 +306,7 @@
       <div id="agentkit-footer">
         <textarea
           id="agentkit-input"
-          placeholder="Escribí tu consulta..."
+          placeholder="EscribÃ­ tu consulta..."
           rows="1"
           aria-label="Mensaje"
           maxlength="1000"
@@ -323,7 +323,7 @@
   `;
   document.body.appendChild(wrapper);
 
-  // ── Referencias DOM ────────────────────────────────────────────────────────
+  // â”€â”€ Referencias DOM â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var btn = document.getElementById("agentkit-btn");
   var panel = document.getElementById("agentkit-panel");
   var messages = document.getElementById("agentkit-messages");
@@ -331,12 +331,12 @@
   var sendBtn = document.getElementById("agentkit-send");
   var closeBtn = document.getElementById("agentkit-close");
 
-  // ── Estado ─────────────────────────────────────────────────────────────────
+  // â”€â”€ Estado â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   var isOpen = false;
   var isLoading = false;
   var greeted = false;
 
-  // ── Helpers ────────────────────────────────────────────────────────────────
+  // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function scrollBottom() {
     messages.scrollTop = messages.scrollHeight;
   }
@@ -346,7 +346,7 @@
     div.className = "ak-msg " + role;
 
     if (role === "assistant") {
-      // Detectar marcador de búsqueda de turnos [BUSCAR_TURNOS_WIDGET:X]
+      // Detectar marcador de bÃºsqueda de turnos [BUSCAR_TURNOS_WIDGET:X]
       var buscarTurnosMatch = text.match(/\[BUSCAR_TURNOS_WIDGET:(\d+)\]/);
       // Detectar marcador de ver mis turnos [VER_MIS_TURNOS_WIDGET]
       var verMisTurnosMatch = text.match(/\[VER_MIS_TURNOS_WIDGET\]/);
@@ -392,7 +392,7 @@
     spinnerDiv.style.marginTop = "8px";
     spinnerDiv.style.fontSize = "13px";
     spinnerDiv.style.color = "#94a3b8";
-    spinnerDiv.textContent = "⏳ Cargando turnos disponibles...";
+    spinnerDiv.textContent = "â³ Cargando turnos disponibles...";
     messageDiv.appendChild(spinnerDiv);
 
     // Hacer la llamada para obtener los turnos
@@ -427,7 +427,7 @@
         scrollBottom();
       })
       .catch(function(error) {
-        spinnerDiv.textContent = "❌ Error al cargar turnos: " + error.message;
+        spinnerDiv.textContent = "âŒ Error al cargar turnos: " + error.message;
         scrollBottom();
       });
   }
@@ -446,16 +446,16 @@
     });
 
     if (!dniMatch) {
-      alert("❌ No encontré tu DNI. Por favor, proporciona tu DNI en la conversación.");
+      alert("âŒ No encontrÃ© tu DNI. Por favor, proporciona tu DNI en la conversaciÃ³n.");
       return;
     }
 
-    if (!confirm("¿Estás seguro de que querés reservar este turno?")) {
+    if (!confirm("Â¿EstÃ¡s seguro de que querÃ©s reservar este turno?")) {
       return;
     }
 
     var originalText = btnElement.textContent;
-    btnElement.textContent = "⏳ Reservando...";
+    btnElement.textContent = "â³ Reservando...";
     btnElement.disabled = true;
 
     // Extraer fecha y hora del turno desde el texto del span anterior
@@ -482,15 +482,15 @@
       })
       .then(function(data) {
         if (data.status === "success") {
-          btnElement.textContent = "✅ Reservado";
+          btnElement.textContent = "âœ… Reservado";
           btnElement.style.backgroundColor = "#22c55e";
 
-          // Agregar botón de agendar recordatorio si tenemos los datos
+          // Agregar botÃ³n de agendar recordatorio si tenemos los datos
           if (turnoData) {
             var calendarLink = "https://www.google.com/calendar/render?action=TEMPLATE" +
               "&text=Turno Odontologia MG" +
               "&dates=" + turnoData.fechaISO + "/" + turnoData.fechaISO +
-              "&details=Turno reservado en Odontologia MG%0ARecuerda presentar comprobante de seña";
+              "&details=Turno reservado en Odontologia MG%0ARecuerda presentar comprobante de seÃ±a";
 
             var calendarBtn = document.createElement("a");
             calendarBtn.href = calendarLink;
@@ -505,11 +505,11 @@
             calendarBtn.style.textDecoration = "none";
             calendarBtn.style.fontWeight = "500";
             calendarBtn.style.fontSize = "13px";
-            calendarBtn.textContent = "📅 Agendar recordatorio";
+            calendarBtn.textContent = "ðŸ“… Agendar recordatorio";
             btnElement.parentNode.insertBefore(calendarBtn, btnElement.nextSibling);
           }
 
-          // Agregar nota sobre seña con importe
+          // Agregar nota sobre seÃ±a con importe
           var noteDiv = document.createElement("div");
           noteDiv.style.marginTop = "12px";
           noteDiv.style.padding = "12px";
@@ -518,19 +518,19 @@
           noteDiv.style.borderLeft = "4px solid #f59e0b";
           noteDiv.style.fontSize = "13px";
           noteDiv.style.color = "#92400e";
-          noteDiv.innerHTML = "<strong>💰 SEÑA REQUERIDA:</strong><br>" +
+          noteDiv.innerHTML = "<strong>ðŸ’° SEÃ‘A REQUERIDA:</strong><br>" +
             "Importe: <strong>$20.000</strong><br>" +
-            "Por favor, envía el comprobante de pago por WhatsApp para confirmar tu turno:<br>" +
-            "<a href='https://wa.me/542995965754?text=Comprobante%20de%20pago%20de%20seña' style='display:inline-block;padding:8px 14px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;font-weight:500;font-size:12px;'>📱 Enviar comprobante por WhatsApp</a>";
+            "Por favor, envÃ­a el comprobante de pago por WhatsApp para confirmar tu turno:<br>" +
+            "<a href='https://wa.me/5492996037282?text=Comprobante%20de%20pago%20de%20seÃ±a' style='display:inline-block;padding:8px 14px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;font-weight:500;font-size:12px;'>ðŸ“± Enviar comprobante por WhatsApp</a>";
           btnElement.closest(".turno-item").parentNode.insertBefore(noteDiv, btnElement.closest(".turno-item").nextSibling);
         } else {
-          btnElement.textContent = "❌ Error: " + data.message;
+          btnElement.textContent = "âŒ Error: " + data.message;
           btnElement.style.backgroundColor = "#ef4444";
         }
         scrollBottom();
       })
       .catch(function(error) {
-        btnElement.textContent = "❌ Error: " + error.message;
+        btnElement.textContent = "âŒ Error: " + error.message;
         btnElement.style.backgroundColor = "#ef4444";
         scrollBottom();
       });
@@ -541,7 +541,7 @@
     var dniMatch = null;
     var allMsgs = messages.querySelectorAll(".ak-msg.user");
     allMsgs.forEach(function(msg) {
-      // Buscar número de 8 dígitos (DNI argentino típico)
+      // Buscar nÃºmero de 8 dÃ­gitos (DNI argentino tÃ­pico)
       var match = msg.textContent.match(/\b(\d{7,8})\b/);
       if (match && !dniMatch) {
         dniMatch = match[1];
@@ -556,7 +556,7 @@
       errorDiv.style.borderRadius = "6px";
       errorDiv.style.borderLeft = "4px solid #ef4444";
       errorDiv.style.fontSize = "13px";
-      errorDiv.textContent = "❌ No encontré tu DNI en la conversación. Por favor, proporciona tu DNI.";
+      errorDiv.textContent = "âŒ No encontrÃ© tu DNI en la conversaciÃ³n. Por favor, proporciona tu DNI.";
       messageDiv.appendChild(errorDiv);
       return;
     }
@@ -566,7 +566,7 @@
     spinnerDiv.style.marginTop = "8px";
     spinnerDiv.style.fontSize = "13px";
     spinnerDiv.style.color = "#94a3b8";
-    spinnerDiv.textContent = "⏳ Buscando tus turnos...";
+    spinnerDiv.textContent = "â³ Buscando tus turnos...";
     messageDiv.appendChild(spinnerDiv);
 
     // Llamada para obtener mis turnos
@@ -583,7 +583,7 @@
           turnosDiv.style.backgroundColor = "#f0fdf4";
           turnosDiv.style.borderRadius = "6px";
           turnosDiv.style.borderLeft = "4px solid #22c55e";
-          turnosDiv.innerHTML = "<strong>📅 Tus turnos:</strong><br>" + data.data;
+          turnosDiv.innerHTML = "<strong>ðŸ“… Tus turnos:</strong><br>" + data.data;
           messageDiv.appendChild(turnosDiv);
 
           // Agregar manejadores de eventos para botones de cancelar
@@ -601,7 +601,7 @@
         scrollBottom();
       })
       .catch(function(error) {
-        spinnerDiv.textContent = "❌ Error al cargar tus turnos: " + error.message;
+        spinnerDiv.textContent = "âŒ Error al cargar tus turnos: " + error.message;
         scrollBottom();
       });
   }
@@ -609,12 +609,12 @@
   function cancelarTurnoAutomatico(idTurno, btnElement) {
     if (!idTurno) return;
 
-    if (!confirm("¿Estás seguro de que querés cancelar este turno?")) {
+    if (!confirm("Â¿EstÃ¡s seguro de que querÃ©s cancelar este turno?")) {
       return;
     }
 
     var originalText = btnElement.textContent;
-    btnElement.textContent = "⏳ Cancelando...";
+    btnElement.textContent = "â³ Cancelando...";
     btnElement.disabled = true;
 
     fetch(API_URL + "/turnos/cancelar", {
@@ -627,16 +627,16 @@
       })
       .then(function(data) {
         if (data.status === "success") {
-          btnElement.textContent = "✅ Cancelado";
+          btnElement.textContent = "âœ… Cancelado";
           btnElement.style.backgroundColor = "#22c55e";
         } else {
-          btnElement.textContent = "❌ Error: " + data.message;
+          btnElement.textContent = "âŒ Error: " + data.message;
           btnElement.style.backgroundColor = "#ef4444";
         }
         scrollBottom();
       })
       .catch(function(error) {
-        btnElement.textContent = "❌ Error: " + error.message;
+        btnElement.textContent = "âŒ Error: " + error.message;
         btnElement.style.backgroundColor = "#ef4444";
         scrollBottom();
       });
@@ -691,17 +691,17 @@
     }, 50);
   }
 
-  // ── Abrir / cerrar ─────────────────────────────────────────────────────────
+  // â”€â”€ Abrir / cerrar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function openPanel() {
     isOpen = true;
     panel.classList.add("open");
     panel.setAttribute("aria-hidden", "false");
-    btn.innerHTML = "✕";
+    btn.innerHTML = "âœ•";
     input.focus();
 
     if (!greeted) {
       greeted = true;
-      addMessage("assistant", "¡Hola! 👋 Soy Marian, la asistente virtual de Odontologia MG. ¿En qué te puedo ayudar hoy?\n\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>A- SOLICITAR UN TURNO</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>B- CONSULTAR OBRA SOCIAL</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>C- CONSULTAR VALORES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>D- SERVICIOS DISPONIBLES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;cursor:pointer;'>F- OTRAS CONSULTAS</div>");
+      addMessage("assistant", "Â¡Hola! ðŸ‘‹ Soy Marian, la asistente virtual de Odontologia MG. Â¿En quÃ© te puedo ayudar hoy?\n\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>A- SOLICITAR UN TURNO</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>B- CONSULTAR OBRA SOCIAL</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>C- CONSULTAR VALORES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;margin-right:8px;cursor:pointer;'>D- SERVICIOS DISPONIBLES</div>\n<div style='display:inline-block;padding:10px 16px;background:#1d4ed8;color:white;border-radius:6px;margin-top:8px;cursor:pointer;'>F- OTRAS CONSULTAS</div>");
       attachMenuListeners();
     }
   }
@@ -710,7 +710,7 @@
     isOpen = false;
     panel.classList.remove("open");
     panel.setAttribute("aria-hidden", "true");
-    btn.innerHTML = "💬";
+    btn.innerHTML = "ðŸ’¬";
   }
 
   btn.addEventListener("click", function () {
@@ -719,7 +719,7 @@
 
   closeBtn.addEventListener("click", closePanel);
 
-  // ── Enviar mensaje ─────────────────────────────────────────────────────────
+  // â”€â”€ Enviar mensaje â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function sendMessage() {
     var text = input.value.trim();
     if (!text || isLoading) return;
@@ -742,14 +742,14 @@
       hideTyping();
 
       if (!res.ok) {
-        addMessage("assistant", "Lo siento, hubo un error al conectarme. Intentá de nuevo 🙏");
+        addMessage("assistant", "Lo siento, hubo un error al conectarme. IntentÃ¡ de nuevo ðŸ™");
       } else {
         var data = await res.json();
         addMessage("assistant", data.response);
       }
     } catch (err) {
       hideTyping();
-      addMessage("assistant", "No pude conectarme al servidor. Verificá tu conexión e intentá de nuevo.");
+      addMessage("assistant", "No pude conectarme al servidor. VerificÃ¡ tu conexiÃ³n e intentÃ¡ de nuevo.");
     }
 
     isLoading = false;
@@ -768,9 +768,10 @@
 
   input.addEventListener("input", autoResize);
 
-  // ── Cerrar con Escape ──────────────────────────────────────────────────────
+  // â”€â”€ Cerrar con Escape â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && isOpen) closePanel();
   });
 
 })();
+
