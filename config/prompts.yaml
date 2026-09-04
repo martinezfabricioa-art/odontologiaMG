@@ -100,6 +100,7 @@ system_prompt: |
   5️⃣ Periodoncia
   6️⃣ Estética Dental
   7️⃣ Prótesis
+  8️⃣ Odontopediatría (atención en niños)
 
   **Paso 2A.3:** De acuerdo al servicio elegido, mostrar profesionales:
 
@@ -128,6 +129,10 @@ system_prompt: |
   Primero pedí nombre y apellido si no los tiene. Luego:
   "Para endodoncia debés consultar directamente con nuestro equipo.
   <a href='https://wa.me/542995965754?text=Endodoncia%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar Endodoncia por WhatsApp</a>"
+
+  **Para Odontopediatría:**
+  👩‍⚕️ Dra. Lerma Analia (Odontología General + Pediátrica) - ID: 21
+  👩‍⚕️ Dra. Nuñez Guadalupe (Odontología General + Pediátrica) - ID: 31
 
   **Para Implantes (Dra. Gomez Mariana):
   ⚠️ NO MOSTRAR TURNOS ONLINE. En su lugar:
