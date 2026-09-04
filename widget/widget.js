@@ -509,16 +509,19 @@
             btnElement.parentNode.insertBefore(calendarBtn, btnElement.nextSibling);
           }
 
-          // Agregar nota sobre comprobante de seña
+          // Agregar nota sobre seña con importe
           var noteDiv = document.createElement("div");
           noteDiv.style.marginTop = "12px";
-          noteDiv.style.padding = "10px";
+          noteDiv.style.padding = "12px";
           noteDiv.style.backgroundColor = "#fef3c7";
           noteDiv.style.borderRadius = "6px";
           noteDiv.style.borderLeft = "4px solid #f59e0b";
           noteDiv.style.fontSize = "13px";
           noteDiv.style.color = "#92400e";
-          noteDiv.innerHTML = "<strong>⚠️ Importante:</strong> Debe enviar el comprobante de pago de la seña para que su turno sea confirmado.";
+          noteDiv.innerHTML = "<strong>💰 SEÑA REQUERIDA:</strong><br>" +
+            "Importe: <strong>$20.000</strong><br>" +
+            "Por favor, envía el comprobante de pago por WhatsApp para confirmar tu turno:<br>" +
+            "<a href='https://wa.me/542995965754?text=Comprobante%20de%20pago%20de%20seña' style='display:inline-block;padding:8px 14px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;font-weight:500;font-size:12px;'>📱 Enviar comprobante por WhatsApp</a>";
           btnElement.closest(".turno-item").parentNode.insertBefore(noteDiv, btnElement.closest(".turno-item").nextSibling);
         } else {
           btnElement.textContent = "❌ Error: " + data.message;
