@@ -57,11 +57,28 @@ pip install -r requirements.txt
 # Run local server (auto-reload on changes)
 uvicorn agent.main:app --reload --port 8000
 
+# Run with debug logging
+uvicorn agent.main:app --reload --port 8000 --log-level debug
+
 # Run tests
 pytest tests/test_local.py
 
+# Run a specific test
+pytest tests/test_local.py::test_name -v
+
+# Run tests with coverage
+pytest tests/test_local.py --cov=agent
+
 # Check API docs (when server running)
 # Visit http://localhost:8000/docs
+
+# Reset local SQLite database
+rm agentkit.db
+# (Recreates on next server start)
+
+# Inspect database (if sqlite3 installed)
+sqlite3 agentkit.db ".tables"
+sqlite3 agentkit.db "SELECT * FROM mensaje LIMIT 5;"
 ```
 
 ## Environment Variables
@@ -70,11 +87,25 @@ pytest tests/test_local.py
 ANTHROPIC_API_KEY=sk-ant-...           # Required for Claude API (Sonnet 4.6+)
 PORT=8000                              # Server port (Railway overrides dynamically)
 ENVIRONMENT=development|production     # Controls logging level
-DATABASE_URL=sqlite+aiosqlite:///./agentkit.db  # SQLite for dev
+DATABASE_URL=sqlite+aiosqlite:///./agentkit.db  # SQLite for dev, PostgreSQL for prod
 ALLOWED_ORIGINS=*                      # CORS whitelist (*, or comma-separated URLs)
 ```
 
-For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMENT=production`, `ALLOWED_ORIGINS=https://www.odontologiamg.ar/`
+### Local Setup (.env file)
+1. Copy `.env.example` to `.env`
+2. Add your `ANTHROPIC_API_KEY`
+3. Server auto-loads from `.env` on startup (via python-dotenv)
+
+### Production (Railway)
+Use Dashboard → Variables:
+- `ANTHROPIC_API_KEY` — Your Anthropic API key
+- `ENVIRONMENT=production`
+- `ALLOWED_ORIGINS=https://www.odontologiamg.ar/` (or comma-separated list)
+- `DATABASE_URL` — Leave empty to use Railway's default PostgreSQL
+
+### Database Backends
+- **Development:** SQLite (`DATABASE_URL=sqlite+aiosqlite:///./agentkit.db`) — no setup needed
+- **Production:** PostgreSQL — Railway provisions automatically when using default DATABASE_URL
 
 ## Common Tasks
 
@@ -115,15 +146,107 @@ For Railway: use Dashboard → Variables to set `ANTHROPIC_API_KEY`, `ENVIRONMEN
 
 ## Testing
 
-**Local test file:** `tests/test_local.py` — Manual/integration tests. Currently tests chat endpoint locally.
+### Backend API Tests
+**Local test file:** `tests/test_local.py` — Manual/integration tests for chat endpoint.
 
-To test:
+Run tests while server is running:
 ```bash
 uvicorn agent.main:app --reload --port 8000  # Terminal 1
 pytest tests/test_local.py  # Terminal 2
 ```
 
 Or use FastAPI `/docs` Swagger UI at `http://localhost:8000/docs` to test endpoints interactively.
+
+### Frontend Widget Testing
+To test the widget locally, embed it in an HTML file:
+
+1. Create `test_widget.html`:
+```html
+<html>
+<head>
+  <title>Widget Test</title>
+  <script>
+    window.AgentKitConfig = {
+      apiUrl: "http://localhost:8000",
+      title: "Odontologia MG",
+      subtitle: "¿En qué te puedo ayudar?",
+      primaryColor: "#1d4ed8"
+    };
+  </script>
+  <script src="http://localhost:8000/widget/widget.js"></script>
+</head>
+<body>
+  <h1>Widget Test</h1>
+</body>
+</html>
+```
+
+2. Open in browser: `file:///path/to/test_widget.html`
+3. Open DevTools (F12) to check console for errors
+4. Test the chat flow: DNI extraction, turnos markers, button clicks
+
+## Project Structure Quick Reference
+
+```
+odontologiamg/
+├── agent/              # FastAPI backend
+│   ├── main.py         # Endpoints: /chat, /turnos/*, /paciente/*
+│   ├── brain.py        # Claude API + system prompt loader
+│   ├── memory.py       # SQLAlchemy ORM (Mensaje, Paciente tables)
+│   ├── turnos.py       # agenteWeb007.php HTTP client
+│   └── tools.py        # Reserved for agent tools (unused)
+├── widget/             # JavaScript chatbot UI
+│   └── widget.js       # Embeddable widget (~350 lines)
+├── config/             # Configuration files
+│   ├── prompts.yaml    # System prompt + doctor ID mappings
+│   └── business.yaml   # Clinic metadata (unused but available)
+├── knowledge/          # Knowledge base
+│   └── base de conocimiento.txt  # Clinic info (not yet injected in prompts)
+├── tests/              # Test suite
+│   └── test_local.py   # Integration tests
+├── Dockerfile          # Container build config
+├── requirements.txt    # Python dependencies
+└── CLAUDE.md           # This file
+```
+
+## Session & Authentication Flow
+
+1. **Frontend** — Widget initializes with random `agentkit_session_id` → stored in `localStorage`
+2. **POST /chat** — Widget sends `{"session_id": "...", "message": "..."}`
+3. **Backend** — FastAPI creates/retrieves `Paciente` record by session_id, stores chat in `Mensaje` table
+4. **Marker Detection** — Agent outputs `[BUSCAR_TURNOS_WIDGET:X]` → widget strips marker and calls `/turnos/buscar-html/X`
+5. **DNI Extraction** — Widget regex-scans chat history for 7-8 digit number, stores as patient DNI
+6. **Turno Operations** — Clicks send POST to `/turnos/reservar` or `/turnos/cancelar` with DNI + idTurno
+
+**No API authentication** — Trust is via CORS (ALLOWED_ORIGINS env var).
+
+## Troubleshooting
+
+### Widget doesn't show up on page
+- Check `window.AgentKitConfig.apiUrl` points to correct backend URL
+- Check console (F12) for CORS errors — verify `ALLOWED_ORIGINS` env var includes the widget domain
+- Verify `widget/widget.js` loads (check Network tab in DevTools)
+
+### Session not preserved between page reloads
+- Check if localStorage is enabled in browser (DevTools → Application → Local Storage)
+- Check if browser is in private/incognito mode (localStorage disabled)
+- Verify backend is persisting session in database (check `agentkit.db`)
+
+### DNI not detected or turnos not showing
+- Widget searches chat history for regex `\d{7,8}` — user must type a 7-8 digit number naturally
+- Marker detection is case-sensitive: must be exactly `[BUSCAR_TURNOS_WIDGET:X]` or `[VER_MIS_TURNOS_WIDGET]`
+- Check backend logs: `uvicorn agent.main:app --log-level debug`
+
+### Turnos API returning errors
+- Test agenteWeb007.php directly: `curl -X POST http://odontologiamg.ar/assets/agenteWeb007.php -d "funcion=1&idProfesional=3"`
+- Check Railway logs if deployed: Dashboard → Logs tab
+- Verify MEDICOS dict in `agent/turnos.py` matches doctor IDs in prompts.yaml
+
+### Database issues
+- SQLite file location: `./agentkit.db` (relative to current working directory)
+- Reset database: `rm agentkit.db` (recreates on next server start)
+- Check tables: `sqlite3 agentkit.db ".tables"`
+- Inspect messages: `sqlite3 agentkit.db "SELECT * FROM mensaje ORDER BY id DESC LIMIT 10;"`
 
 ## Known Limitations & TODOs
 
