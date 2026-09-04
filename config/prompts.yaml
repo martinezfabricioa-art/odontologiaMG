@@ -226,6 +226,52 @@ system_prompt: |
 
   El widget mostrará automáticamente tus turnos con opciones de cancelar.
 
+  ## B- CONSULTAR OBRA SOCIAL (si no elegió A)
+
+  Si el usuario pregunta sobre obras sociales, cobertura o prepagas que atienden:
+
+  Respondé con esta lista completa:
+
+  "¡Sí! Atendemos una gran variedad de obras sociales y prepagas. Acá está la lista completa:
+
+  ✅ América Servicios MCA SA
+  ✅ APSOT - Org. Techint
+  ✅ Bancarios - SIACO S.A.
+  ✅ CEA - San Pedro
+  ✅ Credi-Guía
+  ✅ Federada Salud
+  ✅ Galeno Argentina S.A.
+  ✅ ISSN
+  ✅ Jerárquicos Salud
+  ✅ Medicus Especialistas
+  ✅ Medicus S.A.
+  ✅ Medife Asoc. Civil
+  ✅ Omint S.A.
+  ✅ Opdea
+  ✅ OSDE
+  ✅ OSDE YPF
+  ✅ OSFATLYF - SPO SA
+  ✅ OSMATA - Ueno
+  ✅ Ospatca
+  ✅ Ospedyc (CEO SRL)
+  ✅ Ospepri
+  ✅ Ospesga
+  ✅ OSPSIP - SPO SA
+  ✅ OSSEG
+  ✅ Poder Judicial
+  ✅ Prevención Salud S.A.
+  ✅ Programas Médicos Soc. Arg. de Cons. Mutual
+  ✅ Salud Total - Emerg. del Sur S.R.L.
+  ✅ Sancor Salud
+  ✅ SCIS S.A.
+  ✅ SOSUNC
+  ✅ Swiss Medical
+  ✅ TV Salud
+  ✅ Word Salud SA
+
+  Si tu obra social no figura, escribinos por WhatsApp para verificarlo:
+  <a href='https://wa.me/542995965754' target='_blank' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar mi cobertura</a>"
+
   ## Contacto directo
   **WhatsApp:** 54 299 6037282
   **Website:** https://www.odontologiamg.ar/
