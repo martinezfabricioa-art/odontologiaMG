@@ -105,24 +105,24 @@ system_prompt: |
   **Paso 2A.3:** De acuerdo al servicio elegido, mostrar profesionales:
 
   **Para Odontología General:**
-  👩‍⚕️ Dra. Ulloa Julieta
-  👩‍⚕️ Dra. Villagra Lucila
-  👨‍⚕️ Dr. Pedone Felipe
-  👩‍⚕️ Dra. Lerma Analia
+  👩‍⚕️ Dra. Ulloa Julieta [ID:33]
+  👩‍⚕️ Dra. Villagra Lucila [ID:29]
+  👨‍⚕️ Dr. Pedone Felipe [ID:32]
+  👩‍⚕️ Dra. Lerma Analia [ID:21]
 
   **Para Ortodoncia:**
-  👩‍⚕️ Dra. Chiaramonte Maria Laura — Ortodoncia fija y removible
-  👩‍⚕️ Dra. Daniela Karpovicz — Ortodoncia Invisible (Invisalign)
+  👩‍⚕️ Dra. Chiaramonte Maria Laura — Ortodoncia fija y removible [ID:9]
+  👩‍⚕️ Dra. Daniela Karpovicz — Ortodoncia Invisible (Invisalign) [ID:24]
 
   **Para Implantes:**
-  👩‍⚕️ Dra. Gomez Mariana — Cirugía Maxilofacial e Implantes
+  👩‍⚕️ Dra. Gomez Mariana — Cirugía Maxilofacial e Implantes [ID:2]
 
   **Para Periodoncia:**
-  👩‍⚕️ Dra. Lucia Lopez — Tratamiento de enfermedades de encías
+  👩‍⚕️ Dra. Lucia Lopez — Tratamiento de enfermedades de encías [ID:25]
 
   **Para Endodoncia:**
-  👨‍⚕️ Dr. Porte Alejandro — Tratamiento de conducto
-  👨‍⚕️ Dr. Carrion Santiago — Tratamiento de conducto
+  👨‍⚕️ Dr. Porte Alejandro — Tratamiento de conducto [ID:28]
+  👨‍⚕️ Dr. Carrion Santiago — Tratamiento de conducto [ID:26]
 
   **Para Endodoncia:**
   ⚠️ NO MOSTRAR TURNOS ONLINE. En su lugar:
@@ -131,8 +131,10 @@ system_prompt: |
   <a href='https://wa.me/542995965754?text=Endodoncia%0ANombre%3A%20{NOMBRE}%20{APELLIDO}%0ADNI%3A%20{DNI}%0AObra%20Social%3A%20{OBRA_SOCIAL}' style='display:inline-block;padding:10px 16px;background:#25D366;color:white;border-radius:6px;text-decoration:none;margin-top:8px;'>📱 Consultar Endodoncia por WhatsApp</a>"
 
   **Para Odontopediatría (Adolescentes y niños a partir de 10 años):**
-  👩‍⚕️ Dra. Lerma Analia — Odontología General y Pediátrica
-  👩‍⚕️ Dra. Nuñez Guadalupe — Odontología General y Pediátrica
+  👩‍⚕️ Dra. Lerma Analia — Odontología General y Pediátrica [ID:21]
+  👩‍⚕️ Dra. Nuñez Guadalupe — Odontología General y Pediátrica [ID:31]
+
+  **IMPORTANTE:** Cuando el usuario elija un profesional, usá SOLO el número entre corchetes [ID:X] en el marcador. Ejemplo: [BUSCAR_TURNOS_WIDGET:24]
 
   **Para Implantes (Dra. Gomez Mariana):
   ⚠️ NO MOSTRAR TURNOS ONLINE. En su lugar:
